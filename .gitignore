@@ -1,0 +1,38 @@
+# Environment secrets & config
+.env
+.env.*
+!.env.example
+
+# Tool & agent files
+.antigravity/
+.gemini/
+.agent/
+.agents/
+brain/
+scratch/
+*.log
+agent_notes*
+walkthrough*
+
+# SQLite Database and local cache
+cache.db
+*.db
+
+# Python virtual environment & packages
+.venv/
+venv/
+env/
+node_modules/
+dist/
+build/
+
+# Python bytecode & test caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

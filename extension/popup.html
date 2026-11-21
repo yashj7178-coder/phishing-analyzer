@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing URL & Email Analyzer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <span class="brand-badge">SEC</span>
+        <span class="brand-title">PhishAnalyzer</span>
+      </div>
+      <div id="backend-status" class="status-indicator">
+        <span class="status-dot"></span>
+        <span id="status-text">Connecting...</span>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-tab="tab-active-page">Active Page</button>
+      <button class="nav-btn" data-tab="tab-scan-url">Scan URL</button>
+      <button class="nav-btn" data-tab="tab-scan-email">Email Header</button>
+      <button class="nav-btn" data-tab="tab-history">History</button>
+    </nav>
+
+    <!-- TAB 1: Active Page -->
+    <section id="tab-active-page" class="tab-panel active">
+      <div class="panel-card">
+        <div class="section-title">Current Tab Security Assessment</div>
+        <div id="active-url-display" class="url-subtext">Fetching active tab...</div>
+        
+        <div id="active-page-result" class="result-placeholder">
+          <div class="spinner"></div>
+          <div>Analyzing active domain & TLS certificates...</div>
+        </div>
+
+        <div class="links-section">
+          <div class="links-header">
+            <span id="links-count-label">Page Links: 0 found</span>
+            <button id="btn-scan-links" class="btn-sm">Scan Links</button>
+          </div>
+          <div id="links-list" class="links-container">
+            <div class="empty-state">Click "Scan Links" to check links on this page.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Scan Custom URL -->
+    <section id="tab-scan-url" class="tab-panel">
+      <div class="panel-card">
+        <div class="section-title">Analyze Custom URL or Domain</div>
+        <div class="input-row">
+          <input type="text" id="custom-url-input" placeholder="e.g. paypa1-login.top or github.com" />
+          <button id="btn-custom-url-scan" class="btn-primary">Scan</button>
+        </div>
+        <div id="custom-url-result" class="result-placeholder">
+          <div class="empty-state">Enter a URL or domain above to inspect.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Scan Email Headers -->
+    <section id="tab-scan-email" class="tab-panel">
+      <div class="panel-card">
+        <div class="section-title-row">
+          <div class="section-title">Email Header & Spoofing Analyzer</div>
+          <button id="btn-sample-email" class="btn-link">Sample</button>
+        </div>
+        <textarea id="email-header-input" placeholder="Paste RFC 822 email headers (From, Reply-To, Authentication-Results)..."></textarea>
+        <button id="btn-analyze-email" class="btn-primary full-width">Analyze Headers</button>
+        
+        <div id="email-analysis-result" class="result-placeholder">
+          <div class="empty-state">Paste raw email headers above to verify SPF, DKIM, DMARC, and sender mismatches.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: History -->
+    <section id="tab-history" class="tab-panel">
+      <div class="panel-card">
+        <div class="section-title-row">
+          <div class="section-title">Recent Scans</div>
+          <button id="btn-refresh-history" class="btn-link">Refresh</button>
+        </div>
+        <div id="history-list" class="history-container">
+          <div class="empty-state">No recent scans recorded.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>FastAPI Security Engine • v1.0.0</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
